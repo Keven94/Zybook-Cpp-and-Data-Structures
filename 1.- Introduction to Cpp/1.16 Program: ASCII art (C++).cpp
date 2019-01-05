@@ -18,14 +18,14 @@
 Hint: A backslash \ in a string acts as an escape character, such as with a newline \n. 
 So, to print an actual backslash, escape that backslash by prepending another backslash. 
 Ex: The following prints a single backslash: cout << "\\";
-/*
+*/
 
 
 #include <iostream>
 using namespace std;
 
-int main() {
-
+int main() 
+{
    // Draw tree
    cout << "   *"     << endl;
    cout << "  ***"    << endl;
