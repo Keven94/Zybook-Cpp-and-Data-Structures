@@ -11,3 +11,14 @@ Output a space after each user-specified character, including after the line's l
 
 
 Example output for triangleChar = % and triangleHeight = 5:
+
+Enter a character:
+%
+Enter triangle height:
+5
+
+% 
+% % 
+% % % 
+% % % % 
+% % % % % 
