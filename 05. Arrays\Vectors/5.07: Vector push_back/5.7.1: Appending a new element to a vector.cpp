@@ -1,4 +1,4 @@
-*/
+/*
 Append newValue to the end of vector tempReadings. 
 Ex: If newValue = 67, then tempReadings = {53, 57, 60} becomes {53, 57, 60, 67}.
 */
