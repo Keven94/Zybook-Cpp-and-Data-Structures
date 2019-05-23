@@ -16,7 +16,7 @@ void PrintMenu()
    cout << "Choose an option:" << endl;
 }
 
-void GetNumOfNonWSCharacters(const string& str)
+int GetNumOfNonWSCharacters(const string& str)
 {
    int count = 0;
    
@@ -26,25 +26,23 @@ void GetNumOfNonWSCharacters(const string& str)
          count++;
    }
    
-   cout << "Number of non-whitespace characters: " << count << endl;
-   return;
+   return count;
 }
 
-void GetNumOfWords(const string& str)
+int GetNumOfWords(const string& str)
 {  
    int count = 0;
    
    for (size_t i = 0; i < str.size(); i++)
    {
-      if(str[i] == ' ')
+      if(str[i] == ' ' && isalpha(str[i + 1])) //if it has a space and a letter after is a word
          count++;
    }
    
-   cout << "Number of words: " << count + 1 << endl;
-   return;
+   return count + 1;
 }
 
-void FindText(string textToFind, string str)
+int FindText(string textToFind, string str)
 {  
    int count = 0;
    size_t position = str.find(textToFind, 0); //the first textToFind after position 0;
@@ -55,9 +53,7 @@ void FindText(string textToFind, string str)
       position = str.find(textToFind, position + 1);       //now to serach next textToFind avaliable
    }
    
-   cout << "\"" << textToFind << "\" instances: " << count << endl;
-   
-   return;
+   return count;
 }
 
 void ReplaceExclamation(string& str)
@@ -71,11 +67,19 @@ void ReplaceExclamation(string& str)
 
 void ShortenSpace(string& str)
 {  
-   for(size_t i = 0; i < str.size(); i++)
-   {
-      if(str[i] == ' ' && str[i - 1] == ' ')
-            str.erase(i, 1);
+   string newString; 
+   int i;
+  
+   while(true) 
+   { 
+      index = str.find("  ");
+      if (i == -1)
+         break;
+      newString = str.substr(0, i);
+      str.replace(0, i + 1, newString);
    }
+  
+  return;
 }
   
 
@@ -97,22 +101,21 @@ int main()
       switch(userInput)
       {
          case 'q':
-               cout << "Bye bye :)" << endl;
                go = false; 
                break;
          case 'c': 
-               GetNumOfNonWSCharacters(userString); 
+               cout << "Number of non-whitespace characters: " << GetNumOfNonWSCharacters(userString) << endl;
                PrintMenu();
                break;
          case 'w':
-               GetNumOfWords(userString); 
+               cout << "Number of words: " << GetNumOfWords(userString) << endl;
                PrintMenu();
                break;
          case 'f':   
                cout << "Enter a word or phrase to be found:" << endl;
                cin.ignore();
                getline(cin, textToFind);
-               FindText(textToFind, userString);
+               cout << "\"" << textToFind << "\" instances: " << FindText(textToFind, userString) << endl;
                PrintMenu();
                break;
          case 'r':
